@@ -1,9 +1,9 @@
 //IMPORTS
-import express from "express";
-import dotenv from "dotenv";
-dotenv.config({path: './config/.env'});
-import mongoose from "mongoose";
-import cors from "cors";
+const express = require('express');
+const userRoutes = require('./routes/user.routes.js');
+require ('dotenv').config({path: './config/.env'});
+const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 
@@ -21,13 +21,18 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// MIDDLEWARE ROUTES
+app.use('/user', userRoutes);
+
 // CONNECT TO MONGODB
 const connectionUrl = 'mongodb+srv://' + process.env.DB_USER_PASS + '@cluster0.bru98.mongodb.net/mern-bibliotheque';
+const PORT = process.env.PORT || 5000;
+
 mongoose.connect(connectionUrl, {useNewUrlParser: true, useUnifiedTopology: true,})
     .then(() => console.log('connected to mongoDB'))
     .catch((err) => console.log('failed to connect to mongoDB', err));
 
 //SERVER
-app.listen(5400, () => {
+app.listen(5000, () => {
     console.log(`listenning on port ${process.env.PORT}`);
 });
