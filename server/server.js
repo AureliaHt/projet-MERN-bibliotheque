@@ -1,8 +1,10 @@
 //IMPORTS
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const userRoutes = require('./routes/user.routes.js');
 require ('dotenv').config({path: './config/.env'});
 const mongoose = require('mongoose');
+const {checkUser, requireAuth} = require('./middleware/auth.middleware');
 const cors = require('cors');
 
 const app = express();
@@ -20,6 +22,13 @@ app.use(cors(corsOptions));
 //MIDDLEWARES
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+// JWT
+app.get('*', checkUser);
+app.get('/jwtid', requireAuth, (req, res) => {
+    res.status(200).send(res.locals.user._id)
+});
 
 // MIDDLEWARE ROUTES
 app.use('/user', userRoutes);
