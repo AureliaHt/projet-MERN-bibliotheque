@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&family=Playfair+Display+SC:wght@400;700&family=Syne+Mono&display=swap');
+
+$font-1: 'Playfair Display SC', 'Montserrat', serif;
+$font-2: 'Montserrat', serif;
+
+$color-1: #ececec;
+$color-2: #ffffff80;
+$color-3: #4646461f;
+$color-4: #1d8f2c;
+$color-5: #27a780;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+body {
+    background-color: $color-1;
+    color: $color-3;
+    font-family: $font-2;
+}
+
+h1 {
+    font-family: $font-1;
+}
