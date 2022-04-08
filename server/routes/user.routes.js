@@ -1,11 +1,11 @@
 const router = require ('express').Router();
 const authController = require('../controllers/auth.controller');
 const userController = require('../controllers/user.controller.js');
-const rateLimiter = require('../helpers/rateLimiter');
+const {loginAccountLimiter} = require('../helpers/rateLimiter');
 
 //AUTH
 router.post('/register', authController.signUp);
-router.post('/login', rateLimiter(1, 10), authController.signIn);
+router.post('/login', loginAccountLimiter, authController.signIn);
 router.get('/logout', authController.logout);
 
 // USER

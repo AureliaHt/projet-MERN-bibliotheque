@@ -1,5 +1,10 @@
-.home{
-    width: 200px;
-    height: 200px;
-    background-color: blue;
+.homeWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background: url(../../../public/img/stilllife-g1bd5b9fad_1920.jpg) no-repeat center;
+    background-size: cover;
 }

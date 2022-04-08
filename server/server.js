@@ -1,28 +1,28 @@
 //IMPORTS
 const express = require('express');
+const http = require('http');
 const cookieParser = require('cookie-parser');
 const userRoutes = require('./routes/user.routes.js');
 require ('dotenv').config({path: './config/.env'});
 const mongoose = require('mongoose');
 const {checkUser, requireAuth} = require('./middleware/auth.middleware');
 const cors = require('cors');
+const helmet = require('helmet');
+const config = require('./config/config');
+
+const { port, allowedDomains } = config;
 
 const app = express();
 
-const corsOptions = {
-    origin: process.env.CLIENT_URL,
-    credentials: true,
-    'allowedHeaders': ['sessionId', 'Content-Type'],
-    'exposedHeaders': ['sessionId'],
-    'methods': 'GET, HEAD, PUT, POST, PATCH, DELETE',
-    'preflightContinue': false
-}
-app.use(cors(corsOptions));
-
 //MIDDLEWARES
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
+
 app.use(cookieParser());
+
+app.use(cors({ origin: allowedDomains, credentials: true}));
+
+app.use(helmet());
 
 // JWT
 app.get('*', checkUser);
@@ -32,6 +32,8 @@ app.get('/jwtid', requireAuth, (req, res) => {
 
 // MIDDLEWARE ROUTES
 app.use('/user', userRoutes);
+
+const server = http.createServer(app);
 
 // CONNECT TO MONGODB
 const connectionUrl = 'mongodb+srv://' + process.env.DB_USER_PASS + '@cluster0.bru98.mongodb.net/mern-bibliotheque';

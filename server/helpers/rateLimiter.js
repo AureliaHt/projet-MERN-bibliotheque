@@ -1,18 +1,12 @@
 const rateLimit = require('express-rate-limit');
 
-const rateLimiter = (limit, timeframeInMinutes) => {
-  return rateLimit({
-    max: limit,
-    windowMs: timeframeInMinutes * 60 * 1000,
-    message: {
-      error: {
-        status: 429,
-        message: 'TOO_MANY_REQUESTS',
-        expiry: timeframeInMinutes,
-      },
-    },
-  });
-};
+const loginAccountLimiter = rateLimit({
+    max: 5,
+    windowMs: 15 * 60 * 1000,
+    message:"Too many request made from this IP, please try again in 15 minutes",
+    standardHeaders: true,
+    legacyHeaders: false,
+});
 
 
-module.exports = rateLimiter;
+module.exports = {loginAccountLimiter,};
