@@ -1,9 +1,13 @@
-import LogForm from "../components/logForm/LogForm";
+import Register from '../components/Register';
 
 const Home = () => {
     return (
         <div className="homeWrapper">
-            < LogForm />
+            <div className="authWrapper">
+                <div className="authForm">
+                    < Register />
+                </div>
+            </div>
         </div>
     );
 };

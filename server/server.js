@@ -10,7 +10,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const config = require('./config/config');
 
-const { port, allowedDomains } = config;
+//const { port, allowedDomains } = config;
 
 const app = express();
 
@@ -20,9 +20,11 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(cookieParser());
 
-app.use(cors({ origin: allowedDomains, credentials: true}));
+app.use(cors({ origin: true, credentials: true}));
 
 app.use(helmet());
+
+
 
 // JWT
 app.get('*', checkUser);
