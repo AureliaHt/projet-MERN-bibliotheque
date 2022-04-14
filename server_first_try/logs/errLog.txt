@@ -1,5 +1,0 @@
-20220413	10:44:34	2732b164-08a2-4413-9465-c94dc9a84ce6	Error: Not allowed by CORS
-20220413	10:49:43	5aa299e0-e517-4454-a6c7-a6ab253421fa	Error: Not allowed by CORS
-20220413	10:49:44	2312fec7-b0a1-438a-821f-942f4e7bb6e7	Error: Not allowed by CORS
-20220413	10:49:45	993a86c4-9732-4de2-bcb6-389da1577635	Error: Not allowed by CORS
-20220413	10:49:45	c07ffc9c-4c0e-4536-9715-6f7f593e3043	Error: Not allowed by CORS

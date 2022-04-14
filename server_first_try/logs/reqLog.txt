@@ -1,6 +1,0 @@
-20220412	17:14:22	2457dc84-4a17-4f07-9968-b59d61874cb8	OPTIONS	http://localhost:3000	/register
-20220413	10:44:34	c89f521b-d372-4ed0-9930-362ac68e73cd	OPTIONS	http://localhost:3000	/register
-20220413	10:49:43	4f0f6411-03f5-4d2d-832e-274439dd0813	OPTIONS	http://localhost:3000	/register
-20220413	10:49:44	32f071b3-0e16-40fc-8bdd-3f4aab24f421	OPTIONS	http://localhost:3000	/register
-20220413	10:49:45	52a95570-46cd-4e9c-b030-03083b4cdfd6	OPTIONS	http://localhost:3000	/register
-20220413	10:49:45	6154279c-991a-446d-9bce-1c240ec5a876	OPTIONS	http://localhost:3000	/register

@@ -1,43 +1,35 @@
-//IMPORTS
-const express = require('express');
-const http = require('http');
-const cookieParser = require('cookie-parser');
-const userRoutes = require('./routes/user.routes.js');
 require ('dotenv').config({path: './config/.env'});
-const mongoose = require('mongoose');
-const {checkUser, requireAuth} = require('./middleware/auth.middleware');
-const cors = require('cors');
-const helmet = require('helmet');
-const config = require('./config/config');
-
-//const { port, allowedDomains } = config;
-
+const express = require('express');
 const app = express();
+const cors = require('cors');
+const corsOptions = require('./config/corsOptions');
+const verifyJWT = require('./middleware/verifyJWT');
+const cookieParser = require('cookie-parser');
+const credentials = require('./middleware/credentials');
+const mongoose = require('mongoose');
 
-//MIDDLEWARES
+// Handle options credentials check - before CORS!
+// and fetch cookies credentials requirement
+app.use(credentials);
+app.use(cors(corsOptions));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(cookieParser());
 
-app.use(cors({ origin: true, credentials: true}));
+// routes
+app.use('/', require('./routes/root'));
+app.use('/register', require('./routes/register'));
+app.use('/auth', require('./routes/auth'));
+app.use('/refresh', require('./routes/refresh'));
+app.use('/logout', require('./routes/logout'));
 
-app.use(helmet());
+app.use(verifyJWT);
+app.use('/employees', require('./routes/api/employees'));
+app.use('/users', require('./routes/api/users'));
 
-
-
-// JWT
-app.get('*', checkUser);
-app.get('/jwtid', requireAuth, (req, res) => {
-    res.status(200).send(res.locals.user._id)
-});
-
-// MIDDLEWARE ROUTES
-app.use('/user', userRoutes);
-
-const server = http.createServer(app);
-
-// CONNECT TO MONGODB
+// Connect to MongoDB
 const connectionUrl = 'mongodb+srv://' + process.env.DB_USER_PASS + '@cluster0.bru98.mongodb.net/mern-bibliotheque';
 const PORT = process.env.PORT || 5000;
 
