@@ -6,7 +6,7 @@
     height: 100vh;
     width: 100%;
     overflow: hidden;
-    background: url(../../../public/img/stilllife-g1bd5b9fad_1920.jpg) no-repeat center;
+    background: url(../../../public/img/homeImg_1920.jpg) no-repeat center;
     background-size: cover;
 }
 
@@ -16,7 +16,7 @@
     align-items: center;
     justify-content: space-evenly;
     width: 30%;
-    min-height: 60%;
+    min-height: 70%;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     backdrop-filter: blur(5px);
@@ -130,3 +130,48 @@ button {
 .line {
     display: inline-block;
 }
+
+@media only screen and (max-width: 1552px){
+    .authWrapper {
+        width: 40%;
+        min-height: 70%;
+    }
+}
+
+@media only screen and (max-width: 1220px){
+    .homeWrapper {
+        background: url(../../../public/img/homeImg_1280.jpg) no-repeat center;
+    }
+
+    .authWrapper {
+    width: 40%;
+    min-height: 60%;
+    }
+
+    .authForm h1 {
+    margin-left: 0.5rem;
+    font-size: 25px;
+    }
+}
+
+@media only screen and (max-width: 849px){
+    .authWrapper {
+        width: 60%;
+        min-height: 70%;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    .authWrapper {
+        width: 80%;
+        min-height: 80%;
+    }
+}
+
+@media only screen and (max-width: 400px){
+    .authWrapper {
+        width: 95%;
+        min-height: 70%;
+    }
+}
+

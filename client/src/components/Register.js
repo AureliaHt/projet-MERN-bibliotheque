@@ -14,6 +14,10 @@ const Register = () => {
   const [validName, setValidName] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
 
+  const [email, setEmail] = useState("");
+  const [validEmail, setValidEmail] = useState(false);
+  const [emailFocus, setEmailFocus] = useState(false);
+
   const [password, setPassword] = useState("");
   const [validPassword, setValidPassword] = useState(false);
   const [passwordFocus, setPasswordFocus] = useState(false);
